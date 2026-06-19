@@ -1,8 +1,13 @@
 # kafka-testing-lab
 
+![python](https://img.shields.io/badge/python-3.11-3776AB?logo=python&logoColor=white) ![kafka](https://img.shields.io/badge/Apache-Kafka-231F20?logo=apachekafka&logoColor=white) ![pytest](https://img.shields.io/badge/pytest-8.x-0A9EDC?logo=pytest&logoColor=white) ![license](https://img.shields.io/badge/license-MIT-green)
+
 Test suite for event-driven services built on Apache Kafka. Covers reliability scenarios that most projects skip: outbox relay, idempotency, at-least-once delivery guarantees, and contract checks on message schemas.
 
 Built while covering 12 Kafka integrations at work - outbox, idempotency, retry loops, gRPC/REST contract mismatches. This repo is a distilled version of patterns I kept rewriting.
+
+
+![architecture diagram](docs/img/kafka.svg)
 
 ## What's tested
 

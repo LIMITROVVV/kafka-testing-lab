@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="460" viewBox="0 0 1160 460" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <rect width="1160" height="460" fill="#FAFBFC"/>
+  <text x="40" y="48" font-size="26" font-weight="700" fill="#1B1F24">kafka-testing-lab - what gets tested in the delivery path</text>
+  <text x="40" y="76" font-size="15" fill="#57606A">an event leaves a service and has to arrive once, in order, matching its schema. each hop is a place things break.</text>
+  <rect x="40" y="130" width="180" height="74" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+  <text x="130" y="163" text-anchor="middle" font-size="16" font-weight="600" fill="#1B1F24">Service</text>
+  <text x="130" y="186" text-anchor="middle" font-size="13" fill="#57606A">writes order event</text>
+  <rect x="280" y="130" width="180" height="74" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+  <text x="370" y="163" text-anchor="middle" font-size="16" font-weight="600" fill="#1B1F24">Outbox store</text>
+  <text x="370" y="186" text-anchor="middle" font-size="13" fill="#57606A">unpublished entries</text>
+  <rect x="520" y="130" width="180" height="74" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+  <text x="610" y="163" text-anchor="middle" font-size="16" font-weight="600" fill="#1B1F24">Relay</text>
+  <text x="610" y="186" text-anchor="middle" font-size="13" fill="#57606A">forwards + marks sent</text>
+  <rect x="760" y="130" width="180" height="74" rx="10" fill="#1B1F24" stroke="#1B1F24" stroke-width="1.5"/>
+  <text x="850" y="163" text-anchor="middle" font-size="16" font-weight="600" fill="#FFFFFF">Kafka topic</text>
+  <text x="850" y="186" text-anchor="middle" font-size="13" fill="#B9C0C8">keyed, partitioned</text>
+  <rect x="1000" y="130" width="120" height="74" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+  <text x="1060" y="163" text-anchor="middle" font-size="16" font-weight="600" fill="#1B1F24">Consumer</text>
+  <text x="1060" y="186" text-anchor="middle" font-size="13" fill="#57606A">manual commit</text>
+  <g stroke="#8C959F" stroke-width="2" fill="none" marker-end="url(#ah)">
+    <line x1="220" y1="167" x2="276" y2="167"/>
+    <line x1="460" y1="167" x2="516" y2="167"/>
+    <line x1="700" y1="167" x2="756" y2="167"/>
+    <line x1="940" y1="167" x2="996" y2="167"/>
+  </g>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#8C959F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="280" y="262" width="180" height="92" rx="10" fill="#EAF3EC" stroke="#AECDB4" stroke-width="1.5"/>
+  <text x="370" y="288" text-anchor="middle" font-size="14" font-weight="700" fill="#1A7F37">test_outbox</text>
+  <text x="370" y="311" text-anchor="middle" font-size="12.5" fill="#36603F">event reaches topic</text>
+  <text x="370" y="330" text-anchor="middle" font-size="12.5" fill="#36603F">order preserved</text>
+  <text x="370" y="349" text-anchor="middle" font-size="12.5" fill="#36603F">no resend after publish</text>
+  <rect x="700" y="262" width="200" height="92" rx="10" fill="#EAF3EC" stroke="#AECDB4" stroke-width="1.5"/>
+  <text x="800" y="288" text-anchor="middle" font-size="14" font-weight="700" fill="#1A7F37">test_idempotency</text>
+  <text x="800" y="311" text-anchor="middle" font-size="12.5" fill="#36603F">duplicate event (same id)</text>
+  <text x="800" y="330" text-anchor="middle" font-size="12.5" fill="#36603F">dedup by event_id</text>
+  <text x="800" y="349" text-anchor="middle" font-size="12.5" fill="#36603F">processed exactly once</text>
+  <rect x="940" y="372" width="180" height="66" rx="10" fill="#FBF1E6" stroke="#E5C089" stroke-width="1.5"/>
+  <text x="1030" y="398" text-anchor="middle" font-size="14" font-weight="700" fill="#9A6700">test_at_least_once</text>
+  <text x="1030" y="420" text-anchor="middle" font-size="12.5" fill="#7d5a14">crash before commit -></text>
+  <text x="1030" y="436" text-anchor="middle" font-size="12.5" fill="#7d5a14">message redelivered</text>
+  <rect x="760" y="372" width="160" height="66" rx="10" fill="#EAF1FB" stroke="#9DB8E5" stroke-width="1.5"/>
+  <text x="840" y="398" text-anchor="middle" font-size="14" font-weight="700" fill="#0A53C9">test_contract</text>
+  <text x="840" y="420" text-anchor="middle" font-size="12.5" fill="#244b8f">every event validates</text>
+  <text x="840" y="436" text-anchor="middle" font-size="12.5" fill="#244b8f">against json schema</text>
+  <g stroke="#C2C9D1" stroke-width="1.5" stroke-dasharray="4 4">
+    <line x1="370" y1="206" x2="370" y2="260"/>
+    <line x1="850" y1="206" x2="800" y2="260"/>
+    <line x1="1060" y1="206" x2="1030" y2="370"/>
+    <line x1="850" y1="206" x2="840" y2="370"/>
+  </g>
+</svg>
